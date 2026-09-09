@@ -32,6 +32,12 @@ import {
   Target,
   Activity,
   CalendarDays,
+  PhoneCall,
+  MessageSquare,
+  Smartphone,
+  Mic,
+  UserRoundCheck,
+  Radio,
   CircleUserRound,
   Factory,
   ShoppingCart,
@@ -184,44 +190,394 @@ const ROUTES = {
 
 const LANGUAGE = {
   en: {
-    dashboard:"Dashboard", marketplace:"Marketplace", farmer:"Farmer Portal", fpo:"FPO Hub", bulk:"Bulk Buyer", logistics:"Logistics", orders:"Orders", ai:"AI Insights", impact:"Impact",
-    search:"Search", notifications:"Notifications", online:"Online", offline:"Offline", save:"Save", cancel:"Cancel", submit:"Submit", continue:"Continue", back:"Back", viewAll:"View All", learnMore:"Learn More", close:"Close", refresh:"Refresh", loading:"Loading", kg:"kg",
-    farmerName:"Rajesh", goodMorning:"Good morning", listHarvest:"List New Harvest", sellProduce:"Sell Produce", findBuyer:"Find Buyer", trackOrder:"Track Order", smartAdvice:"Smart Advice", marketPrice:"Market Price", todaysPrice:"Today's Price", recommendedPrice:"Recommended Price", quantity:"Quantity", quality:"Quality", harvestDate:"Harvest Date", perishability:"Perishability",
-    availableProduce:"Available Produce", acrossActiveListings:"Across active listings", activeOrders:"Active Orders", ordersInSupplyChain:"Orders in supply chain", orderValue:"Order Value", currentDemoValue:"Current demo value", priorityBatches:"Priority Batches", requireFasterDispatch:"Require faster dispatch",
-    procurementControlCenter:"Procurement Control Center", logisticsOperationsCenter:"Logistics Operations Center", fpoOperationsDashboard:"FPO Operations Dashboard", krishiPathCommandCenter:"KrishiPath Command Center", dashboardDescription:"Connect farmers, buyers and logistics through one transparent farm-to-market network.", exploreMarketplace:"Explore Marketplace", demoJourney:"Demo Journey",
-    supplyDemandSignal:"Supply & Demand Signal", prototypeMarketSignal:"Prototype market signal for demonstration", liveSimulation:"Live Simulation", todaysSmartActions:"Today's Smart Actions", recommendedNextSteps:"Recommended next steps", reviewTomatoPrice:"Review Tomato Price", demandUpward:"Demand signal indicates upward movement", priorityBatchesAction:"priority batches", checkPerishability:"Check perishability and dispatch", buyerMatchAvailable:"Buyer Match Available", potentialTomatoMatch:"Potential Grade-A tomato match", routeOptimization:"Route Optimization", multiStopReady:"Multi-stop logistics simulation ready", supplyChain:"KrishiPath Supply Chain", oneTraceableJourney:"One traceable journey from harvest to buyer", price:"Price", fairRecommendation:"Fair Recommendation", match:"Match", order:"Order", createTransaction:"Create Transaction", receiveProduce:"Receive Produce",
-    farmerPortal:"Farmer Portal", farmerPortalSubtitle:"Turn your harvest into a transparent digital listing.", onlineSync:"Online Sync", offlineReady:"Offline Ready", enterCropDetails:"Enter your crop details", askingPrice:"Asking Price / kg",
-    directMarketplace:"Direct Farm Marketplace", marketplaceSubtitle:"Discover produce directly from farmers and FPOs.", cart:"Cart", searchCrop:"Search crop, farmer or location...", noProduce:"No produce found", tryAnother:"Try another crop, farmer or filter.", available:"AVAILABLE", farmerLabel:"FARMER", addToCart:"Add to Cart", itemsInCart:"item(s) in cart", selectedForPurchase:"kg selected for purchase", checkout:"Checkout",
-    orderManagement:"Order Management", orderManagementSubtitle:"Track transactions across the KrishiPath supply chain.", noOrders:"No orders yet", createOrder:"Create an order from the marketplace or buyer portal.", totalOrders:"TOTAL ORDERS", active:"ACTIVE", product:"Product", buyer:"Buyer", value:"Value", status:"Status", batch:"Batch",
-    fpoHub:"FPO Hub", fpoHubSubtitle:"Aggregate farmer supply and coordinate procurement.", fposConnected:"FPOs Connected", activeDemoNetwork:"Active demonstration network", farmersReached:"Farmers Reached", visibleListings:"Across visible listings", aggregatedSupply:"Aggregated Supply", currentInventory:"Current available inventory", activeBatches:"Active Batches", traceableBatches:"Traceable produce batches", fpoSupplyNetwork:"FPO Supply Network", participatingGroups:"Aggregated view of participating producer groups", farmers:"Farmers", batches:"Batches", supply:"Supply", viewSupply:"View Supply",
-    english:"English", hindi:"हिंदी", odia:"ଓଡ଼ିଆ"
+    // Navigation
+    dashboard: "Dashboard",
+    marketplace: "Marketplace",
+    farmer: "Farmer Portal",
+    fpo: "FPO Hub",
+    bulk: "Bulk Buyer",
+    logistics: "Logistics",
+    orders: "Orders",
+    ai: "AI Insights",
+    impact: "Impact",
+    access: "Universal Access",
+
+    // Common
+    search: "Search",
+    notifications: "Notifications",
+    online: "Online",
+    offline: "Offline",
+    save: "Save",
+    cancel: "Cancel",
+    submit: "Submit",
+    continue: "Continue",
+    back: "Back",
+    viewAll: "View All",
+    learnMore: "Learn More",
+    close: "Close",
+    refresh: "Refresh",
+    loading: "Loading",
+    kg: "kg",
+
+    // Farmer
+    farmerName: "Rajesh",
+    goodMorning: "Good morning",
+    listHarvest: "List New Harvest",
+    sellProduce: "Sell Produce",
+    findBuyer: "Find Buyer",
+    trackOrder: "Track Order",
+    smartAdvice: "Smart Advice",
+    marketPrice: "Market Price",
+    todaysPrice: "Today's Price",
+    recommendedPrice: "Recommended Price",
+    quantity: "Quantity",
+    quality: "Quality",
+    harvestDate: "Harvest Date",
+    perishability: "Perishability",
+    availableProduce: "Available Produce",
+    acrossActiveListings: "Across active listings",
+    activeOrders: "Active Orders",
+    ordersInSupplyChain: "Orders in supply chain",
+    orderValue: "Order Value",
+    currentDemoValue: "Current demo value",
+    priorityBatches: "Priority Batches",
+    requireFasterDispatch: "Require faster dispatch",
+    availableProduce: "उपलब्ध उपज",
+    acrossActiveListings: "सक्रिय लिस्टिंग में",
+    activeOrders: "सक्रिय ऑर्डर",
+    ordersInSupplyChain: "सप्लाई चेन में ऑर्डर",
+    orderValue: "ऑर्डर का मूल्य",
+    currentDemoValue: "वर्तमान डेमो मूल्य",
+    priorityBatches: "प्राथमिकता वाले बैच",
+    requireFasterDispatch: "जल्दी भेजने की आवश्यकता",
+    availableProduce: "ଉପଲବ୍ଧ ଫସଲ",
+    acrossActiveListings: "ସକ୍ରିୟ ତାଲିକାଭୁକ୍ତ ଫସଲରେ",
+    activeOrders: "ସକ୍ରିୟ ଅର୍ଡର",
+    ordersInSupplyChain: "ଯୋଗାଣ ଶୃଙ୍ଖଳାରେ ଅର୍ଡର",
+    orderValue: "ଅର୍ଡର ମୂଲ୍ୟ",
+    currentDemoValue: "ବର୍ତ୍ତମାନର ଡେମୋ ମୂଲ୍ୟ",
+    priorityBatches: "ପ୍ରାଥମିକତା ବ୍ୟାଚ୍",
+    requireFasterDispatch: "ଶୀଘ୍ର ପଠାଇବା ଆବଶ୍ୟକ",
+
+    // Marketplace
+    availableProduce: "Available Produce",
+    farmer: "Farmer",
+    location: "Location",
+    price: "Price",
+    priority: "Priority",
+    addToCart: "Add to Cart",
+    buyNow: "Buy Now",
+    gradeA: "Grade A",
+    gradeB: "Grade B",
+
+    // Buyer
+    buyer: "Buyer",
+    buyerMatching: "Buyer Matching",
+    demand: "Demand",
+    targetPrice: "Target Price",
+    deadline: "Deadline",
+    match: "Match",
+    matchScore: "Match Score",
+
+    // Logistics
+    logisticsOperations: "Logistics Operations",
+    optimizeRoute: "Optimize Route",
+    pickup: "Pickup",
+    delivery: "Delivery",
+    route: "Route",
+    distance: "Distance",
+    estimatedTime: "Estimated Time",
+
+    // Orders
+    orderManagement: "Order Management",
+    noOrders: "No orders yet",
+    order: "Order",
+    product: "Product",
+    value: "Value",
+    status: "Status",
+    batch: "Batch",
+
+    // AI
+    aiSmartInsights: "AI & Smart Insights",
+    priceRecommendation: "Price Recommendation",
+    confidence: "Confidence",
+    supplySignal: "Supply Signal",
+    demandSignal: "Demand Signal",
+    sellNow: "Sell Now",
+
+    // Access
+    universalAccess: "Universal Farmer Access",
+    smartphone: "Smartphone",
+    keypadPhone: "Keypad Phone",
+    voiceIVR: "Voice / IVR",
+    sms: "SMS",
+    whatsapp: "WhatsApp",
+    sahayak: "KrishiPath Sahayak",
+    noSmartphone: "No smartphone? No problem.",
+    noInternet: "No internet? No problem.",
+    assistedAccess: "Assisted Access",
+    oneTransactionLayer: "One Transaction Layer",
+
+    // Languages
+    procurementControlCenter: "Procurement Control Center",
+logisticsOperationsCenter: "Logistics Operations Center",
+fpoOperationsDashboard: "FPO Operations Dashboard",
+krishiPathCommandCenter: "KrishiPath Command Center",
+
+dashboardDescription:
+  "Connect farmers, buyers and logistics through one transparent farm-to-market network.",
+
+exploreMarketplace: "Explore Marketplace",
+demoJourney: "Demo Journey",
+
+procurementControlCenter: "खरीद नियंत्रण केंद्र",
+logisticsOperationsCenter: "लॉजिस्टिक्स संचालन केंद्र",
+fpoOperationsDashboard: "FPO संचालन डैशबोर्ड",
+krishiPathCommandCenter: "कृषिपथ कमांड सेंटर",
+
+dashboardDescription:
+  "किसानों, खरीदारों और लॉजिस्टिक्स को एक पारदर्शी farm-to-market नेटवर्क से जोड़ें।",
+
+exploreMarketplace: "बाज़ार देखें",
+demoJourney: "डेमो यात्रा",
+
+procurementControlCenter: "କ୍ରୟ ନିୟନ୍ତ୍ରଣ କେନ୍ଦ୍ର",
+logisticsOperationsCenter: "ଲଜିଷ୍ଟିକ୍ସ ପରିଚାଳନା କେନ୍ଦ୍ର",
+fpoOperationsDashboard: "FPO ପରିଚାଳନା ଡ୍ୟାସବୋର୍ଡ",
+krishiPathCommandCenter: "କୃଷିପଥ କମାଣ୍ଡ ସେଣ୍ଟର",
+
+dashboardDescription:
+  "କୃଷକ, କ୍ରେତା ଏବଂ ଲଜିଷ୍ଟିକ୍ସକୁ ଗୋଟିଏ ସ୍ୱଚ୍ଛ farm-to-market ନେଟୱର୍କ ସହିତ ଯୋଡନ୍ତୁ।",
+
+exploreMarketplace: "ବଜାର ଦେଖନ୍ତୁ",
+demoJourney: "ଡେମୋ ଯାତ୍ରା",
+
+    english: "English",
+    hindi: "हिन्दी",
+    odia: "ଓଡ଼ିଆ",
   },
+
   hi: {
-    dashboard:"डैशबोर्ड", marketplace:"बाज़ार", farmer:"किसान पोर्टल", fpo:"FPO केंद्र", bulk:"थोक खरीदार", logistics:"लॉजिस्टिक्स", orders:"आदेश", ai:"AI अंतर्दृष्टि", impact:"प्रभाव",
-    search:"खोजें", notifications:"सूचनाएँ", online:"ऑनलाइन", offline:"ऑफ़लाइन", save:"सहेजें", cancel:"रद्द करें", submit:"जमा करें", continue:"जारी रखें", back:"वापस", viewAll:"सभी देखें", learnMore:"और जानें", close:"बंद करें", refresh:"रिफ्रेश", loading:"लोड हो रहा है", kg:"किग्रा",
-    farmerName:"राजेश", goodMorning:"सुप्रभात", listHarvest:"नई फसल सूचीबद्ध करें", sellProduce:"उपज बेचें", findBuyer:"खरीदार खोजें", trackOrder:"ऑर्डर ट्रैक करें", smartAdvice:"स्मार्ट सलाह", marketPrice:"बाज़ार भाव", todaysPrice:"आज का भाव", recommendedPrice:"अनुशंसित भाव", quantity:"मात्रा", quality:"गुणवत्ता", harvestDate:"फसल की तारीख", perishability:"खराब होने की दर",
-    availableProduce:"उपलब्ध उपज", acrossActiveListings:"सक्रिय लिस्टिंग में", activeOrders:"सक्रिय ऑर्डर", ordersInSupplyChain:"सप्लाई चेन के ऑर्डर", orderValue:"ऑर्डर मूल्य", currentDemoValue:"वर्तमान डेमो मूल्य", priorityBatches:"प्राथमिकता बैच", requireFasterDispatch:"तेज़ डिस्पैच आवश्यक",
-    procurementControlCenter:"खरीद नियंत्रण केंद्र", logisticsOperationsCenter:"लॉजिस्टिक्स संचालन केंद्र", fpoOperationsDashboard:"FPO संचालन डैशबोर्ड", krishiPathCommandCenter:"KrishiPath कमांड सेंटर", dashboardDescription:"किसानों, खरीदारों और लॉजिस्टिक्स को एक पारदर्शी खेत-से-बाज़ार नेटवर्क से जोड़ें।", exploreMarketplace:"मार्केटप्लेस देखें", demoJourney:"डेमो यात्रा",
-    supplyDemandSignal:"आपूर्ति और मांग संकेत", prototypeMarketSignal:"डेमो के लिए बाज़ार संकेत", liveSimulation:"लाइव सिमुलेशन", todaysSmartActions:"आज की स्मार्ट कार्रवाइयाँ", recommendedNextSteps:"अनुशंसित अगले कदम", reviewTomatoPrice:"टमाटर का भाव देखें", demandUpward:"मांग बढ़ने का संकेत", priorityBatchesAction:"प्राथमिकता बैच", checkPerishability:"खराब होने और डिस्पैच की जाँच करें", buyerMatchAvailable:"खरीदार मैच उपलब्ध", potentialTomatoMatch:"संभावित Grade-A टमाटर मैच", routeOptimization:"रूट ऑप्टिमाइज़ेशन", multiStopReady:"मल्टी-स्टॉप लॉजिस्टिक्स सिमुलेशन तैयार", supplyChain:"KrishiPath सप्लाई चेन", oneTraceableJourney:"फसल से खरीदार तक एक ट्रेस करने योग्य यात्रा", price:"भाव", fairRecommendation:"उचित अनुशंसा", match:"मैच", order:"ऑर्डर", createTransaction:"लेन-देन बनाएँ", receiveProduce:"उपज प्राप्त करें",
-    farmerPortal:"किसान पोर्टल", farmerPortalSubtitle:"अपनी फसल को पारदर्शी डिजिटल लिस्टिंग में बदलें।", onlineSync:"ऑनलाइन सिंक", offlineReady:"ऑफ़लाइन तैयार", enterCropDetails:"अपनी फसल का विवरण दर्ज करें", askingPrice:"मांग मूल्य / किग्रा",
-    directMarketplace:"सीधा किसान बाज़ार", marketplaceSubtitle:"किसानों और FPO से सीधे उपज खोजें।", cart:"कार्ट", searchCrop:"फसल, किसान या स्थान खोजें...", noProduce:"कोई उपज नहीं मिली", tryAnother:"दूसरी फसल, किसान या फ़िल्टर आज़माएँ।", available:"उपलब्ध", farmerLabel:"किसान", addToCart:"कार्ट में जोड़ें", itemsInCart:"कार्ट में आइटम", selectedForPurchase:"किग्रा खरीद के लिए चयनित", checkout:"चेकआउट",
-    orderManagement:"ऑर्डर प्रबंधन", orderManagementSubtitle:"KrishiPath सप्लाई चेन में लेन-देन ट्रैक करें।", noOrders:"अभी कोई ऑर्डर नहीं", createOrder:"मार्केटप्लेस या खरीदार पोर्टल से ऑर्डर बनाएँ।", totalOrders:"कुल ऑर्डर", active:"सक्रिय", product:"उत्पाद", buyer:"खरीदार", value:"मूल्य", status:"स्थिति", batch:"बैच",
-    fpoHub:"FPO केंद्र", fpoHubSubtitle:"किसानों की आपूर्ति एकत्र करें और खरीद का समन्वय करें।", fposConnected:"जुड़े FPO", activeDemoNetwork:"सक्रिय डेमो नेटवर्क", farmersReached:"पहुंचे किसान", visibleListings:"दिख रही लिस्टिंग में", aggregatedSupply:"एकत्रित आपूर्ति", currentInventory:"वर्तमान उपलब्ध इन्वेंटरी", activeBatches:"सक्रिय बैच", traceableBatches:"ट्रेस करने योग्य उपज बैच", fpoSupplyNetwork:"FPO आपूर्ति नेटवर्क", participatingGroups:"भाग लेने वाले उत्पादक समूहों का एकत्रित दृश्य", farmers:"किसान", batches:"बैच", supply:"आपूर्ति", viewSupply:"आपूर्ति देखें",
-    english:"English", hindi:"हिंदी", odia:"ଓଡ଼ିଆ"
+    // Navigation
+    dashboard: "डैशबोर्ड",
+    marketplace: "बाज़ार",
+    farmer: "किसान पोर्टल",
+    fpo: "FPO केंद्र",
+    bulk: "थोक खरीदार",
+    logistics: "लॉजिस्टिक्स",
+    orders: "आदेश",
+    ai: "AI अंतर्दृष्टि",
+    impact: "प्रभाव",
+    access: "सभी के लिए पहुँच",
+
+    // Common
+    search: "खोजें",
+    notifications: "सूचनाएँ",
+    online: "ऑनलाइन",
+    offline: "ऑफलाइन",
+    save: "सहेजें",
+    cancel: "रद्द करें",
+    submit: "जमा करें",
+    continue: "जारी रखें",
+    back: "वापस",
+    viewAll: "सभी देखें",
+    learnMore: "और जानें",
+    close: "बंद करें",
+    refresh: "रिफ्रेश",
+    loading: "लोड हो रहा है",
+    kg: "किग्रा",
+
+    // Farmer
+    farmerName: "राजेश",
+    goodMorning: "सुप्रभात",
+    listHarvest: "नई उपज सूचीबद्ध करें",
+    sellProduce: "उपज बेचें",
+    findBuyer: "खरीदार खोजें",
+    trackOrder: "ऑर्डर ट्रैक करें",
+    smartAdvice: "स्मार्ट सलाह",
+    marketPrice: "बाज़ार भाव",
+    todaysPrice: "आज का भाव",
+    recommendedPrice: "अनुशंसित कीमत",
+    quantity: "मात्रा",
+    quality: "गुणवत्ता",
+    harvestDate: "कटाई की तारीख",
+    perishability: "खराब होने की संभावना",
+
+    // Marketplace
+    availableProduce: "उपलब्ध उपज",
+    farmer: "किसान",
+    location: "स्थान",
+    price: "कीमत",
+    priority: "प्राथमिकता",
+    addToCart: "कार्ट में जोड़ें",
+    buyNow: "अभी खरीदें",
+    gradeA: "ग्रेड A",
+    gradeB: "ग्रेड B",
+
+    // Buyer
+    buyer: "खरीदार",
+    buyerMatching: "खरीदार मिलान",
+    demand: "मांग",
+    targetPrice: "लक्षित कीमत",
+    deadline: "अंतिम तारीख",
+    match: "मिलान",
+    matchScore: "मिलान स्कोर",
+
+    // Logistics
+    logisticsOperations: "लॉजिस्टिक्स संचालन",
+    optimizeRoute: "रूट को बेहतर बनाएं",
+    pickup: "पिकअप",
+    delivery: "डिलीवरी",
+    route: "रूट",
+    distance: "दूरी",
+    estimatedTime: "अनुमानित समय",
+
+    // Orders
+    orderManagement: "ऑर्डर प्रबंधन",
+    noOrders: "अभी कोई ऑर्डर नहीं है",
+    order: "ऑर्डर",
+    product: "उत्पाद",
+    value: "मूल्य",
+    status: "स्थिति",
+    batch: "बैच",
+
+    // AI
+    aiSmartInsights: "AI और स्मार्ट अंतर्दृष्टि",
+    priceRecommendation: "कीमत की सलाह",
+    confidence: "विश्वसनीयता",
+    supplySignal: "आपूर्ति संकेत",
+    demandSignal: "मांग संकेत",
+    sellNow: "अभी बेचें",
+
+    // Access
+    universalAccess: "सभी किसानों के लिए पहुँच",
+    smartphone: "स्मार्टफोन",
+    keypadPhone: "कीपैड फोन",
+    voiceIVR: "वॉइस / IVR",
+    sms: "SMS",
+    whatsapp: "WhatsApp",
+    sahayak: "कृषिपथ सहायक",
+    noSmartphone: "स्मार्टफोन नहीं है? कोई समस्या नहीं।",
+    noInternet: "इंटरनेट नहीं है? कोई समस्या नहीं।",
+    assistedAccess: "सहायता से पहुँच",
+    oneTransactionLayer: "एक लेन-देन प्रणाली",
+
+    // Languages
+    english: "English",
+    hindi: "हिन्दी",
+    odia: "ଓଡ଼ିଆ",
   },
+
   or: {
-    dashboard:"ଡ୍ୟାସବୋର୍ଡ", marketplace:"ବଜାର", farmer:"କୃଷକ ପୋର୍ଟାଲ", fpo:"FPO କେନ୍ଦ୍ର", bulk:"ବଲ୍କ କ୍ରେତା", logistics:"ଲଜିଷ୍ଟିକ୍ସ", orders:"ଅର୍ଡର", ai:"AI ଅନ୍ତର୍ଦୃଷ୍ଟି", impact:"ପ୍ରଭାବ",
-    search:"ଖୋଜନ୍ତୁ", notifications:"ବିଜ୍ଞପ୍ତି", online:"ଅନଲାଇନ", offline:"ଅଫଲାଇନ", save:"ସଞ୍ଚୟ", cancel:"ବାତିଲ", submit:"ଦାଖଲ", continue:"ଜାରି ରଖନ୍ତୁ", back:"ପଛକୁ", viewAll:"ସବୁ ଦେଖନ୍ତୁ", learnMore:"ଅଧିକ ଜାଣନ୍ତୁ", close:"ବନ୍ଦ", refresh:"ରିଫ୍ରେଶ", loading:"ଲୋଡ୍ ହେଉଛି", kg:"କିଗ୍ରା",
-    farmerName:"ରାଜେଶ", goodMorning:"ଶୁଭ ସକାଳ", listHarvest:"ନୂଆ ଫସଲ ତାଲିକାଭୁକ୍ତ କରନ୍ତୁ", sellProduce:"ଉତ୍ପାଦ ବିକ୍ରି କରନ୍ତୁ", findBuyer:"କ୍ରେତା ଖୋଜନ୍ତୁ", trackOrder:"ଅର୍ଡର ଟ୍ରାକ୍ କରନ୍ତୁ", smartAdvice:"ସ୍ମାର୍ଟ ପରାମର୍ଶ", marketPrice:"ବଜାର ଦର", todaysPrice:"ଆଜିର ଦର", recommendedPrice:"ସୁପାରିଶ ଦର", quantity:"ପରିମାଣ", quality:"ଗୁଣବତ୍ତା", harvestDate:"ଅମଳ ତାରିଖ", perishability:"ନଷ୍ଟ ହେବା ଝୁମ୍ପ",
-    availableProduce:"ଉପଲବ୍ଧ ଉତ୍ପାଦ", acrossActiveListings:"ସକ୍ରିୟ ତାଲିକାରେ", activeOrders:"ସକ୍ରିୟ ଅର୍ଡର", ordersInSupplyChain:"ସପ୍ଲାଇ ଚେନ୍ ଅର୍ଡର", orderValue:"ଅର୍ଡର ମୂଲ୍ୟ", currentDemoValue:"ବର୍ତ୍ତମାନ ଡେମୋ ମୂଲ୍ୟ", priorityBatches:"ପ୍ରାଥମିକତା ବ୍ୟାଚ୍", requireFasterDispatch:"ତୁରନ୍ତ ପଠାଇବା ଆବଶ୍ୟକ",
-    procurementControlCenter:"କ୍ରୟ ନିୟନ୍ତ୍ରଣ କେନ୍ଦ୍ର", logisticsOperationsCenter:"ଲଜିଷ୍ଟିକ୍ସ ପରିଚାଳନା କେନ୍ଦ୍ର", fpoOperationsDashboard:"FPO ପରିଚାଳନା ଡ୍ୟାସବୋର୍ଡ", krishiPathCommandCenter:"KrishiPath କମାଣ୍ଡ ସେଣ୍ଟର", dashboardDescription:"କୃଷକ, କ୍ରେତା ଏବଂ ଲଜିଷ୍ଟିକ୍ସକୁ ଗୋଟିଏ ସ୍ୱଚ୍ଛ ଖେତରୁ ବଜାର ନେଟୱର୍କରେ ଯୋଡନ୍ତୁ।", exploreMarketplace:"ମାର୍କେଟପ୍ଲେସ୍ ଦେଖନ୍ତୁ", demoJourney:"ଡେମୋ ଯାତ୍ରା",
-    supplyDemandSignal:"ଯୋଗାଣ ଏବଂ ଚାହିଦା ସଙ୍କେତ", prototypeMarketSignal:"ଡେମୋ ପାଇଁ ବଜାର ସଙ୍କେତ", liveSimulation:"ଲାଇଭ୍ ସିମୁଲେସନ୍", todaysSmartActions:"ଆଜିର ସ୍ମାର୍ଟ କାର୍ଯ୍ୟ", recommendedNextSteps:"ପରବର୍ତ୍ତୀ ସୁପାରିଶିତ ପଦକ୍ଷେପ", reviewTomatoPrice:"ଟମାଟୋ ଦର ଯାଞ୍ଚ କରନ୍ତୁ", demandUpward:"ଚାହିଦା ବଢ଼ିବାର ସଙ୍କେତ", priorityBatchesAction:"ପ୍ରାଥମିକତା ବ୍ୟାଚ୍", checkPerishability:"ନଷ୍ଟ ହେବା ଏବଂ ପଠାଣ ଯାଞ୍ଚ କରନ୍ତୁ", buyerMatchAvailable:"କ୍ରେତା ମ୍ୟାଚ୍ ଉପଲବ୍ଧ", potentialTomatoMatch:"ସମ୍ଭାବ୍ୟ Grade-A ଟମାଟୋ ମ୍ୟାଚ୍", routeOptimization:"ରୁଟ୍ ଅପ୍ଟିମାଇଜେସନ୍", multiStopReady:"ମଲ୍ଟି-ଷ୍ଟପ୍ ଲଜିଷ୍ଟିକ୍ସ ସିମୁଲେସନ୍ ପ୍ରସ୍ତୁତ", supplyChain:"KrishiPath ସପ୍ଲାଇ ଚେନ୍", oneTraceableJourney:"ଅମଳରୁ କ୍ରେତା ପର୍ଯ୍ୟନ୍ତ ଟ୍ରେସ୍ କରିପାରିବା ଯାତ୍ରା", price:"ଦର", fairRecommendation:"ନ୍ୟାୟସଙ୍ଗତ ସୁପାରିଶ", match:"ମ୍ୟାଚ୍", order:"ଅର୍ଡର", createTransaction:"ଲେନଦେନ ସୃଷ୍ଟି", receiveProduce:"ଉତ୍ପାଦ ଗ୍ରହଣ",
-    farmerPortal:"କୃଷକ ପୋର୍ଟାଲ", farmerPortalSubtitle:"ଆପଣଙ୍କ ଅମଳକୁ ସ୍ୱଚ୍ଛ ଡିଜିଟାଲ ତାଲିକାରେ ପରିଣତ କରନ୍ତୁ।", onlineSync:"ଅନଲାଇନ ସିଙ୍କ", offlineReady:"ଅଫଲାଇନ ପ୍ରସ୍ତୁତ", enterCropDetails:"ଫସଲ ବିବରଣୀ ଦିଅନ୍ତୁ", askingPrice:"ଚାହିତ ଦର / କିଗ୍ରା",
-    directMarketplace:"ସିଧା କୃଷକ ବଜାର", marketplaceSubtitle:"କୃଷକ ଏବଂ FPO ଠାରୁ ସିଧାସଳଖ ଉତ୍ପାଦ ଖୋଜନ୍ତୁ।", cart:"କାର୍ଟ", searchCrop:"ଫସଲ, କୃଷକ କିମ୍ବା ସ୍ଥାନ ଖୋଜନ୍ତୁ...", noProduce:"କୌଣସି ଉତ୍ପାଦ ମିଳିଲା ନାହିଁ", tryAnother:"ଅନ୍ୟ ଫସଲ, କୃଷକ କିମ୍ବା ଫିଲ୍ଟର ଚେଷ୍ଟା କରନ୍ତୁ।", available:"ଉପଲବ୍ଧ", farmerLabel:"କୃଷକ", addToCart:"କାର୍ଟରେ ଯୋଡନ୍ତୁ", itemsInCart:"କାର୍ଟରେ ଆଇଟମ୍", selectedForPurchase:"କିଗ୍ରା କ୍ରୟ ପାଇଁ ଚୟନ", checkout:"ଚେକଆଉଟ୍",
-    orderManagement:"ଅର୍ଡର ପରିଚାଳନା", orderManagementSubtitle:"KrishiPath ସପ୍ଲାଇ ଚେନରେ ଲେନଦେନ ଟ୍ରାକ୍ କରନ୍ତୁ।", noOrders:"ଏପର୍ଯ୍ୟନ୍ତ ଅର୍ଡର ନାହିଁ", createOrder:"ମାର୍କେଟପ୍ଲେସ୍ କିମ୍ବା କ୍ରେତା ପୋର୍ଟାଲରୁ ଅର୍ଡର ସୃଷ୍ଟି କରନ୍ତୁ।", totalOrders:"ମୋଟ ଅର୍ଡର", active:"ସକ୍ରିୟ", product:"ଉତ୍ପାଦ", buyer:"କ୍ରେତା", value:"ମୂଲ୍ୟ", status:"ସ୍ଥିତି", batch:"ବ୍ୟାଚ୍",
-    fpoHub:"FPO କେନ୍ଦ୍ର", fpoHubSubtitle:"କୃଷକ ଯୋଗାଣ ଏକତ୍ର କରି କ୍ରୟ ସମନ୍ୱୟ କରନ୍ତୁ।", fposConnected:"ସଂଯୁକ୍ତ FPO", activeDemoNetwork:"ସକ୍ରିୟ ଡେମୋ ନେଟୱର୍କ", farmersReached:"ପହଞ୍ଚିଥିବା କୃଷକ", visibleListings:"ଦୃଶ୍ୟମାନ ତାଲିକାରେ", aggregatedSupply:"ଏକତ୍ରିତ ଯୋଗାଣ", currentInventory:"ବର୍ତ୍ତମାନ ଉପଲବ୍ଧ ଇନଭେଣ୍ଟରୀ", activeBatches:"ସକ୍ରିୟ ବ୍ୟାଚ୍", traceableBatches:"ଟ୍ରେସ୍ କରିପାରିବା ଉତ୍ପାଦ ବ୍ୟାଚ୍", fpoSupplyNetwork:"FPO ଯୋଗାଣ ନେଟୱର୍କ", participatingGroups:"ଅଂଶଗ୍ରହଣକାରୀ ଉତ୍ପାଦକ ଗୋଷ୍ଠୀର ଏକତ୍ରିତ ଦୃଶ୍ୟ", farmers:"କୃଷକ", batches:"ବ୍ୟାଚ୍", supply:"ଯୋଗାଣ", viewSupply:"ଯୋଗାଣ ଦେଖନ୍ତୁ",
-    english:"English", hindi:"हिंदी", odia:"ଓଡ଼ିଆ"
-  }
+    // Navigation
+    dashboard: "ଡ୍ୟାସବୋର୍ଡ",
+    marketplace: "ବଜାର",
+    farmer: "କୃଷକ ପୋର୍ଟାଲ",
+    fpo: "FPO କେନ୍ଦ୍ର",
+    bulk: "ବଲ୍କ କ୍ରେତା",
+    logistics: "ଲଜିଷ୍ଟିକ୍ସ",
+    orders: "ଅର୍ଡର",
+    ai: "AI ଅନ୍ତର୍ଦୃଷ୍ଟି",
+    impact: "ପ୍ରଭାବ",
+    access: "ସମସ୍ତ କୃଷକଙ୍କ ପାଇଁ ପହଞ୍ଚ",
+
+    // Common
+    search: "ଖୋଜନ୍ତୁ",
+    notifications: "ସୂଚନା",
+    online: "ଅନଲାଇନ୍",
+    offline: "ଅଫଲାଇନ୍",
+    save: "ସଞ୍ଚୟ କରନ୍ତୁ",
+    cancel: "ବାତିଲ୍ କରନ୍ତୁ",
+    submit: "ଦାଖଲ କରନ୍ତୁ",
+    continue: "ଆଗକୁ ବଢନ୍ତୁ",
+    back: "ପଛକୁ",
+    viewAll: "ସମସ୍ତ ଦେଖନ୍ତୁ",
+    learnMore: "ଅଧିକ ଜାଣନ୍ତୁ",
+    close: "ବନ୍ଦ କରନ୍ତୁ",
+    refresh: "ରିଫ୍ରେସ୍",
+    loading: "ଲୋଡ୍ ହେଉଛି",
+    kg: "କିଲୋଗ୍ରାମ",
+
+    // Farmer
+    farmerName: "ରାଜେଶ",
+    goodMorning: "ସୁପ୍ରଭାତ",
+    listHarvest: "ନୂଆ ଫସଲ ତାଲିକାଭୁକ୍ତ କରନ୍ତୁ",
+    sellProduce: "ଫସଲ ବିକ୍ରି କରନ୍ତୁ",
+    findBuyer: "କ୍ରେତା ଖୋଜନ୍ତୁ",
+    trackOrder: "ଅର୍ଡରର ସ୍ଥିତି ଦେଖନ୍ତୁ",
+    smartAdvice: "ସ୍ମାର୍ଟ ପରାମର୍ଶ",
+    marketPrice: "ବଜାର ଦର",
+    todaysPrice: "ଆଜିର ଦର",
+    recommendedPrice: "ସୁପାରିଶ କରାଯାଇଥିବା ଦର",
+    quantity: "ପରିମାଣ",
+    quality: "ଗୁଣବତ୍ତା",
+    harvestDate: "ଅମଳ ତାରିଖ",
+    perishability: "ନଷ୍ଟ ହେବାର ସମ୍ଭାବନା",
+
+    // Marketplace
+    availableProduce: "ଉପଲବ୍ଧ ଫସଲ",
+    farmer: "କୃଷକ",
+    location: "ସ୍ଥାନ",
+    price: "ଦର",
+    priority: "ପ୍ରାଥମିକତା",
+    addToCart: "କାର୍ଟରେ ଯୋଡନ୍ତୁ",
+    buyNow: "ବର୍ତ୍ତମାନ କିଣନ୍ତୁ",
+    gradeA: "ଗ୍ରେଡ୍ A",
+    gradeB: "ଗ୍ରେଡ୍ B",
+
+    // Buyer
+    buyer: "କ୍ରେତା",
+    buyerMatching: "କ୍ରେତା ମେଳକ",
+    demand: "ଚାହିଦା",
+    targetPrice: "ଲକ୍ଷ୍ୟ ଦର",
+    deadline: "ଶେଷ ତାରିଖ",
+    match: "ମେଳକ",
+    matchScore: "ମେଳକ ସ୍କୋର",
+
+    // Logistics
+    logisticsOperations: "ଲଜିଷ୍ଟିକ୍ସ ପରିଚାଳନା",
+    optimizeRoute: "ରୁଟ୍ ଉନ୍ନତ କରନ୍ତୁ",
+    pickup: "ସଂଗ୍ରହ",
+    delivery: "ବିତରଣ",
+    route: "ରୁଟ୍",
+    distance: "ଦୂରତା",
+    estimatedTime: "ଆନୁମାନିକ ସମୟ",
+
+    // Orders
+    orderManagement: "ଅର୍ଡର ପରିଚାଳନା",
+    noOrders: "ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଅର୍ଡର ନାହିଁ",
+    order: "ଅର୍ଡର",
+    product: "ଉତ୍ପାଦ",
+    value: "ମୂଲ୍ୟ",
+    status: "ସ୍ଥିତି",
+    batch: "ବ୍ୟାଚ୍",
+
+    // AI
+    aiSmartInsights: "AI ଏବଂ ସ୍ମାର୍ଟ ପରାମର୍ଶ",
+    priceRecommendation: "ଦର ସୁପାରିଶ",
+    confidence: "ବିଶ୍ୱସନୀୟତା",
+    supplySignal: "ଯୋଗାଣ ସଙ୍କେତ",
+    demandSignal: "ଚାହିଦା ସଙ୍କେତ",
+    sellNow: "ବର୍ତ୍ତମାନ ବିକ୍ରି କରନ୍ତୁ",
+
+    // Access
+    universalAccess: "ସମସ୍ତ କୃଷକଙ୍କ ପାଇଁ ପହଞ୍ଚ",
+    smartphone: "ସ୍ମାର୍ଟଫୋନ୍",
+    keypadPhone: "କିପ୍ୟାଡ୍ ଫୋନ୍",
+    voiceIVR: "ଭଏସ୍ / IVR",
+    sms: "SMS",
+    whatsapp: "WhatsApp",
+    sahayak: "କୃଷିପଥ ସହାୟକ",
+    noSmartphone: "ସ୍ମାର୍ଟଫୋନ୍ ନାହିଁ? କୌଣସି ସମସ୍ୟା ନାହିଁ।",
+    noInternet: "ଇଣ୍ଟରନେଟ୍ ନାହିଁ? କୌଣସି ସମସ୍ୟା ନାହିଁ।",
+    assistedAccess: "ସହାୟତା ମାଧ୍ୟମରେ ପହଞ୍ଚ",
+    oneTransactionLayer: "ଗୋଟିଏ ଲେନଦେନ ପ୍ରଣାଳୀ",
+
+    // Languages
+    english: "English",
+    hindi: "हिन्दी",
+    odia: "ଓଡ଼ିଆ",
+  },
 };
 
 /* =========================================================
@@ -922,15 +1278,15 @@ export default function KrishiPath() {
 
   const Dashboard = () => {
     const roleTitle =
-      role === "farmer"
-        ? `${t.goodMorning}, ${t.farmerName} 👋`
-        : role === "bulk"
-          ? t.procurementControlCenter
-          : role === "logistics"
-            ? t.logisticsOperationsCenter
-            : role === "fpo"
-              ? t.fpoOperationsDashboard
-              : t.krishiPathCommandCenter;
+  role === "farmer"
+    ? `${t.goodMorning}, ${t.farmerName} 👋`
+    : role === "bulk"
+      ? t.procurementControlCenter
+      : role === "logistics"
+        ? t.logisticsOperationsCenter
+        : role === "fpo"
+          ? t.fpoOperationsDashboard
+          : t.krishiPathCommandCenter;
 
     return (
       <div className="kp-page">
@@ -942,9 +1298,7 @@ export default function KrishiPath() {
 
             <h2>{roleTitle}</h2>
 
-            <p>
-              {t.dashboardDescription}
-            </p>
+            <p>{t.dashboardDescription}</p>
 
             <div className="kp-hero-buttons">
               <button
@@ -953,9 +1307,9 @@ export default function KrishiPath() {
                   setPage(role === "farmer" ? "farmer" : "marketplace")
                 }
               >
-                {role === "farmer"
-                  ? t.listHarvest
-                  : t.exploreMarketplace}
+                  {role === "farmer"
+                    ? t.listNewHarvest
+                    : t.exploreMarketplace}
                 <ArrowRight size={17} />
               </button>
 
@@ -964,7 +1318,7 @@ export default function KrishiPath() {
                 onClick={() => setShowDemo(true)}
               >
                 <Zap size={17} />
-                Demo Journey
+                {t.demoJourney}
               </button>
             </div>
           </div>
@@ -989,44 +1343,44 @@ export default function KrishiPath() {
         </div>
 
         <div className="kp-stat-grid">
-          <StatCard
-            title={t.availableProduce}
-            value={`${totalStock.toLocaleString("en-IN")} kg`}
-            subtitle={t.acrossActiveListings}
-            icon={Package}
-            trend={12}
-          />
+  <StatCard
+    title={t.availableProduce}
+    value={`${totalStock.toLocaleString("en-IN")} ${t.kg}`}
+    subtitle={t.acrossActiveListings}
+    icon={Package}
+    trend={12}
+  />
 
-          <StatCard
-            title={t.activeOrders}
-            value={orders.length}
-            subtitle={t.ordersInSupplyChain}
-            icon={ShoppingCart}
-            trend={8}
-          />
+  <StatCard
+    title={t.activeOrders}
+    value={orders.length}
+    subtitle={t.ordersInSupplyChain}
+    icon={ShoppingCart}
+    trend={8}
+  />
 
-          <StatCard
-            title={t.orderValue}
-            value={formatMoney(totalOrdersValue)}
-            subtitle={t.currentDemoValue}
-            icon={IndianRupee}
-            trend={15}
-          />
+  <StatCard
+    title={t.orderValue}
+    value={formatMoney(totalOrdersValue)}
+    subtitle={t.currentDemoValue}
+    icon={IndianRupee}
+    trend={15}
+  />
 
-          <StatCard
-            title={t.priorityBatches}
-            value={criticalItems.length}
-            subtitle={t.requireFasterDispatch}
-            icon={AlertTriangle}
-            danger={criticalItems.length > 0}
-          />
-        </div>
+  <StatCard
+    title={t.priorityBatches}
+    value={criticalItems.length}
+    subtitle={t.requireFasterDispatch}
+    icon={AlertTriangle}
+    danger={criticalItems.length > 0}
+  />
+</div>
 
         <div className="kp-grid-2">
           <div className="kp-card">
             <SectionTitle
-              title={t.supplyDemandSignal}
-              subtitle={t.prototypeMarketSignal}
+              title="Supply & Demand Signal"
+              subtitle="Prototype market signal for demonstration"
               action={
                 <Badge type="green">
                   <Activity size={12} /> Live Simulation
@@ -1072,15 +1426,15 @@ export default function KrishiPath() {
 
           <div className="kp-card">
             <SectionTitle
-              title={t.todaysSmartActions}
-              subtitle={t.recommendedNextSteps}
+              title="Today's Smart Actions"
+              subtitle="Recommended next steps"
             />
 
             <div className="kp-action-list">
               <ActionItem
                 icon={IndianRupee}
-                title={t.reviewTomatoPrice}
-                description={t.demandUpward}
+                title="Review Tomato Price"
+                description="Demand signal indicates upward movement"
                 color="green"
                 onClick={() => setPage("ai")}
               />
@@ -1088,23 +1442,23 @@ export default function KrishiPath() {
               <ActionItem
                 icon={AlertTriangle}
                 title={`${criticalItems.length} priority batches`}
-                description={t.checkPerishability}
+                description="Check perishability and dispatch"
                 color="orange"
                 onClick={() => setPage("logistics")}
               />
 
               <ActionItem
                 icon={Target}
-                title={t.buyerMatchAvailable}
-                description={t.potentialTomatoMatch}
+                title="Buyer Match Available"
+                description="Potential Grade-A tomato match"
                 color="blue"
                 onClick={() => setPage("bulk")}
               />
 
               <ActionItem
                 icon={Route}
-                title={t.routeOptimization}
-                description={t.multiStopReady}
+                title="Route Optimization"
+                description="Multi-stop logistics simulation ready"
                 color="purple"
                 onClick={() => setPage("logistics")}
               />
@@ -1114,22 +1468,22 @@ export default function KrishiPath() {
 
         <div className="kp-flow-card">
           <SectionTitle
-            title={t.supplyChain}
-            subtitle={t.oneTraceableJourney}
+            title="KrishiPath Supply Chain"
+            subtitle="One traceable journey from harvest to buyer"
           />
 
           <div className="kp-flow">
             <FlowStep icon="👨‍🌾" title="Farmer" text="List Harvest" />
             <FlowArrow />
-            <FlowStep icon="💰" title={t.price} text={t.fairRecommendation} />
+            <FlowStep icon="💰" title="Price" text="Fair Recommendation" />
             <FlowArrow />
-            <FlowStep icon="🎯" title={t.match} text="Find Buyer" />
+            <FlowStep icon="🎯" title="Match" text="Find Buyer" />
             <FlowArrow />
-            <FlowStep icon="📦" title={t.order} text={t.createTransaction} />
+            <FlowStep icon="📦" title="Order" text="Create Transaction" />
             <FlowArrow />
             <FlowStep icon="🚚" title="Logistics" text="Optimize Route" />
             <FlowArrow />
-            <FlowStep icon="🏪" title={t.buyer} text={t.receiveProduce} />
+            <FlowStep icon="🏪" title="Buyer" text="Receive Produce" />
           </div>
         </div>
       </div>
